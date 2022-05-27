@@ -1,10 +1,11 @@
 import React, { useRef, useState } from 'react';
+//import React from 'react';
 import './App.css';
 
-import firebase from "firebase/app";
-import "firebase/firestore";
-import "firebase/auth";
-import 'firebase/analytics';
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
+import "firebase/compat/auth";
+//import 'firebase/analytics';
 
 import { useAuthState } from "react-firebase-hooks/auth"; 
 import { useCollectionData } from "react-firebase-hooks/firestore";
@@ -22,7 +23,7 @@ firebase.initializeApp({
 });
 const auth = firebase.auth();
 const firestore = firebase.firestore();
-const analytics = firebase.analytics();
+//const analytics = firebase.analytics();
 
 
 function SignIn () {
@@ -40,7 +41,7 @@ function SignIn () {
 
 function SignOut (){
   return auth.currentUser && (
-    <button className="sign-out" onClick={()=> auth.signOut()}>SignOut</button>
+    <button className="sign-out" onClick={()=> auth.signOut()}>Sair</button>
   )
 }
 
@@ -78,7 +79,7 @@ function ChatRoom () {
 
     <form onSubmit={sendMessage}>
 
-      <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="say something nice" />
+      <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="Mensagem" />
 
       <button type="submit" disabled={!formValue}>🕊️</button>
 
